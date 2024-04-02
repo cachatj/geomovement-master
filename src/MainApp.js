@@ -12,7 +12,8 @@ import ChannelChooser from './ChannelChooser/ChannelChooser.js';
 import CustomizedSlider from './TimeSlider/TimeSlider.js';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import lightBlue from '@material-ui/core/colors/lightBlue';
-import { MapboxLayer } from '@deck.gl/mapbox';
+//import { MapboxLayer } from '@deck.gl/mapbox';
+import { MapboxOverlay } from '@deck.gl/mapbox';
 import { ArcLayer } from 'deck.gl';
 import Grid from '@material-ui/core/Grid';
 import { Paper } from '@material-ui/core';
@@ -505,7 +506,7 @@ class MainApp extends React.Component {
             });
           }
           if (this.map.getLayer('arcs')) this.map.removeLayer('arcs');
-          this.map.addLayer(new MapboxLayer({
+          this.map.addLayer(new MapboxOverlay({
             id: 'arcs',
             type: ArcLayer,
             greatCircle: true,
@@ -585,7 +586,7 @@ class MainApp extends React.Component {
           }
         }
         if (this.map.getLayer('arcs')) this.map.removeLayer('arcs');
-        this.map.addLayer(new MapboxLayer({
+        this.map.addLayer(new MapboxOverlay({
           id: 'arcs',
           type: ArcLayer,
           greatCircle: true,
@@ -1049,7 +1050,7 @@ class MainApp extends React.Component {
   componentDidMount() {
 
     mapboxgl.accessToken =
-      '';
+      'pk.eyJ1IjoiY2FjaGF0aiIsImEiOiJjbHVpb2pqbXowNmt3MmlrMjl5aml0c3I4In0.WmE15NbA8winemHoX1gpxg';
 
     // this.mapbox functionality goes here
     this.map = new mapboxgl.Map({
